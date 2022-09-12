@@ -12,6 +12,7 @@ export function TodoInput({ addTask }: TodoInputProps) {
   function handleAddNewTask() {
     if (task !== '') {
       addTask(task);
+      setTask('');
     }
   }
 
@@ -24,13 +25,14 @@ export function TodoInput({ addTask }: TodoInputProps) {
         returnKeyType="send"
         selectionColor="#666666"
         value={task}
-        onChangeText={text => setTask(text)}
+        onChangeText={setTask}
         onSubmitEditing={handleAddNewTask}
       />
       <TouchableOpacity
         testID="add-new-task-button"
         activeOpacity={0.7}
         style={styles.addButton}
+        onPress={handleAddNewTask}
       >
         <Icon name="chevron-right" size={24} color="#B2B2B2" />
       </TouchableOpacity>
